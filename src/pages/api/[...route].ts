@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
 import { getDb } from '../../lib/db';
 import { jobs } from '../../lib/db/schema';
 
@@ -38,10 +39,10 @@ app.post('/jobs', async (c) => {
 });
 
 // Export all methods for Astro to handle
-const handleRequest: APIRoute = ({ request, locals }) => {
+const handleRequest: APIRoute = ({ request }) => {
   // Pass the request to Hono, along with Cloudflare environment variables
   // @ts-ignore
-  return app.fetch(request, locals.runtime?.env);
+  return app.fetch(request, env);
 };
 
 export const ALL = handleRequest;

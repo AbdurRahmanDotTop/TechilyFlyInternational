@@ -1,6 +1,7 @@
 globalThis.process ??= {};
 globalThis.process.env ??= {};
 import { n as __exportAll } from "./rolldown-runtime_BDykq6kg.mjs";
+import { env } from "cloudflare:workers";
 //#region node_modules/hono/dist/compose.js
 var compose = (middleware, onError, onNotFound) => {
 	return (context, next) => {
@@ -5994,8 +5995,8 @@ app.post("/jobs", async (c) => {
 		}, 500);
 	}
 });
-var handleRequest = ({ request, locals }) => {
-	return app.fetch(request, locals.runtime?.env);
+var handleRequest = ({ request }) => {
+	return app.fetch(request, env);
 };
 var ALL = handleRequest;
 //#endregion
