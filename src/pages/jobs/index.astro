@@ -28,10 +28,9 @@ if (location) {
   ));
 }
 
-let query = db.select().from(jobs);
+let query = db.select().from(jobs).$dynamic();
 
 if (conditions.length > 0) {
-  // @ts-ignore
   query = query.where(and(...conditions));
 }
 

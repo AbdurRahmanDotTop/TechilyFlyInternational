@@ -1,0 +1,15 @@
+---
+import { getDb } from '../lib/db';
+import { users } from '../lib/db/schema';
+import { env } from 'cloudflare:workers';
+
+const db = getDb(env);
+const allUsers = await db.select().from(users).all();
+---
+<html>
+  <body>
+    <h1>Users Test</h1>
+    <p>Length: {allUsers.length}</p>
+    <pre>{JSON.stringify(allUsers, null, 2)}</pre>
+  </body>
+</html>
