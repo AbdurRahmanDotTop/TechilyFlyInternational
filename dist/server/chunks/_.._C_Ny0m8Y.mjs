@@ -2,7 +2,7 @@ globalThis.process ??= {};
 globalThis.process.env ??= {};
 import { n as __exportAll } from "./rolldown-runtime_BDykq6kg.mjs";
 import { t as getAuth } from "./auth_DbOmuZna.mjs";
-import { a as jobs, c as users, d as eq, f as inArray, i as employers, n as applications, r as candidateProfiles, s as sessions, t as getDb } from "./db_BmW1G98j.mjs";
+import { a as jobs, c as users, d as eq, f as inArray, i as employers, n as applications, r as candidateProfiles, s as sessions, t as getDb, u as and } from "./db_BmW1G98j.mjs";
 import { env } from "cloudflare:workers";
 //#region node_modules/hono/dist/compose.js
 var compose = (middleware, onError, onNotFound) => {
@@ -1873,6 +1873,30 @@ app.post("/jobs", async (c) => {
 			success: false,
 			error: "Internal Server Error"
 		}, 500);
+	}
+});
+app.post("/jobs/:id/apply", async (c) => {
+	try {
+		const lucia = getAuth(c.env);
+		const sessionId = lucia.readSessionCookie(c.req.header("Cookie") ?? "");
+		if (!sessionId) return c.json({ error: "Unauthorized" }, 401);
+		const { user } = await lucia.validateSession(sessionId);
+		if (!user || user.role !== "CANDIDATE") return c.json({ error: "Only candidates can apply" }, 403);
+		const jobId = c.req.param("id");
+		const db = getDb(c.env);
+		const candidate = await db.select().from(candidateProfiles).where(eq(candidateProfiles.userId, user.id)).get();
+		if (!candidate) return c.json({ error: "Candidate profile not found" }, 404);
+		if (await db.select().from(applications).where(and(eq(applications.jobId, jobId), eq(applications.candidateId, candidate.id))).get()) return c.json({ error: "You have already applied for this job" }, 400);
+		await db.insert(applications).values({
+			id: crypto.randomUUID(),
+			jobId,
+			candidateId: candidate.id,
+			status: "APPLIED"
+		});
+		return c.json({ success: true });
+	} catch (error) {
+		console.error("Failed to apply:", error);
+		return c.json({ error: "Failed to submit application" }, 500);
 	}
 });
 async function requireAdmin(c) {

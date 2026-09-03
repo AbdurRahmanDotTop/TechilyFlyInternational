@@ -1,6 +1,6 @@
 globalThis.process ??= {};
 globalThis.process.env ??= {};
-import { a as DefaultFetchHandler, i as App, o as manifest } from "./chunks/entrypoints_D5WT3rZO.mjs";
+import { a as DefaultFetchHandler, i as App, o as manifest } from "./chunks/entrypoints_BhRKfyRm.mjs";
 import "./chunks/image-binding-transform_Ul6HmeSl.mjs";
 import { EventEmitter } from "node:events";
 import { Writable } from "node:stream";

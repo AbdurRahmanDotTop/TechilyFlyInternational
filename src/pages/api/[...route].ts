@@ -4,7 +4,7 @@ import { env } from 'cloudflare:workers';
 import { getDb } from '../../lib/db';
 import { jobs, users, candidateProfiles, employers, sessions, applications } from '../../lib/db/schema';
 import { getAuth } from '../../lib/auth';
-import { eq, inArray } from 'drizzle-orm';
+import { eq, inArray, and } from 'drizzle-orm';
 
 async function hashPassword(password: string) {
   const msgUint8 = new TextEncoder().encode(password);
@@ -139,6 +139,45 @@ app.post('/jobs', async (c) => {
   } catch (error) {
     console.error('Failed to create job:', error);
     return c.json({ success: false, error: 'Internal Server Error' }, 500);
+  }
+});
+
+app.post('/jobs/:id/apply', async (c) => {
+  try {
+    const lucia = getAuth(c.env);
+    const sessionId = lucia.readSessionCookie(c.req.header('Cookie') ?? "");
+    if (!sessionId) return c.json({ error: 'Unauthorized' }, 401);
+    
+    const { user } = await lucia.validateSession(sessionId);
+    if (!user || user.role !== 'CANDIDATE') return c.json({ error: 'Only candidates can apply' }, 403);
+    
+    const jobId = c.req.param('id');
+    const db = getDb(c.env);
+    
+    // Get candidate profile
+    const candidate = await db.select().from(candidateProfiles).where(eq(candidateProfiles.userId, user.id)).get();
+    if (!candidate) return c.json({ error: 'Candidate profile not found' }, 404);
+    
+    // Check if already applied
+    const existing = await db.select().from(applications).where(
+      and(eq(applications.jobId, jobId), eq(applications.candidateId, candidate.id))
+    ).get();
+    
+    if (existing) {
+      return c.json({ error: 'You have already applied for this job' }, 400);
+    }
+    
+    await db.insert(applications).values({
+      id: crypto.randomUUID(),
+      jobId,
+      candidateId: candidate.id,
+      status: 'APPLIED',
+    });
+    
+    return c.json({ success: true });
+  } catch (error) {
+    console.error('Failed to apply:', error);
+    return c.json({ error: 'Failed to submit application' }, 500);
   }
 });
 

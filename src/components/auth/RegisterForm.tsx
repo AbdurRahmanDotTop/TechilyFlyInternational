@@ -85,6 +85,12 @@ export default function RegisterForm() {
           >
             {loading ? 'Registering...' : 'Register'}
           </button>
+          <div className="text-center text-sm text-muted-foreground mt-4">
+            Already have an account?{' '}
+            <a href="/login" className="text-primary hover:underline font-medium">
+              Sign in
+            </a>
+          </div>
         </form>
       </div>
     </div>

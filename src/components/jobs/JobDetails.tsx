@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 
@@ -15,8 +15,38 @@ interface JobProps {
   description: string;
 }
 
-export default function JobDetails({ job }: { job: JobProps }) {
+export default function JobDetails({ job, user }: { job: JobProps, user: any }) {
   const isClosed = job.status !== 'PUBLISHED' || !job.acceptingApplications;
+  const [isApplying, setIsApplying] = useState(false);
+  const [applyMessage, setApplyMessage] = useState<{type: 'success' | 'error', text: string} | null>(null);
+
+  const handleApply = async () => {
+    if (!user) {
+      window.location.href = `/login?redirectTo=/jobs/${job.id}`;
+      return;
+    }
+    if (user.role !== 'CANDIDATE') {
+      setApplyMessage({ type: 'error', text: 'Only candidates can apply for jobs.' });
+      return;
+    }
+
+    setIsApplying(true);
+    setApplyMessage(null);
+    try {
+      const res = await fetch(`/api/jobs/${job.id}/apply`, {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to apply');
+      }
+      setApplyMessage({ type: 'success', text: 'Application submitted successfully!' });
+    } catch (err: any) {
+      setApplyMessage({ type: 'error', text: err.message });
+    } finally {
+      setIsApplying(false);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto py-12 px-4">
@@ -38,7 +68,16 @@ export default function JobDetails({ job }: { job: JobProps }) {
               Applications Closed
             </Button>
           ) : (
-            <Button size="lg" className="bg-primary hover:bg-primary/90">Apply Now</Button>
+            <div className="flex flex-col items-end gap-2">
+              <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handleApply} disabled={isApplying}>
+                {isApplying ? 'Applying...' : 'Apply Now'}
+              </Button>
+              {applyMessage && (
+                <div className={`text-sm ${applyMessage.type === 'success' ? 'text-green-600' : 'text-destructive'}`}>
+                  {applyMessage.text}
+                </div>
+              )}
+            </div>
           )}
         </div>
         

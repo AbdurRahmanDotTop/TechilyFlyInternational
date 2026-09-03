@@ -1,7 +1,7 @@
 globalThis.process ??= {};
 globalThis.process.env ??= {};
 import { _t as prependForwardSlash, gt as joinPaths, vt as removeBase } from "./sequence_Cy34-R2h.mjs";
-import { r as recordStaticImage } from "./entrypoints_D5WT3rZO.mjs";
+import { r as recordStaticImage } from "./entrypoints_BhRKfyRm.mjs";
 import { c as isESMImportedImage, n as propsToFilename, t as hashTransform } from "./assets_BcPY6117.mjs";
 //#region node_modules/@astrojs/cloudflare/dist/utils/static-image-collection.js
 function installAddStaticImage(config) {

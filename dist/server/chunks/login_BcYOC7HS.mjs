@@ -80,6 +80,18 @@ function LoginForm() {
 						className: "w-full bg-primary hover:bg-primary/90 text-white p-2 rounded disabled:opacity-50",
 						disabled: loading,
 						children: loading ? "Signing in..." : "Sign In"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "text-center text-sm text-muted-foreground mt-4",
+						children: [
+							"Don't have an account?",
+							" ",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								href: "/register",
+								className: "text-primary hover:underline font-medium",
+								children: "Sign up"
+							})
+						]
 					})
 				]
 			})]

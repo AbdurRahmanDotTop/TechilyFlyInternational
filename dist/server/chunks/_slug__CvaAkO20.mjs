@@ -1,6 +1,6 @@
 globalThis.process ??= {};
 globalThis.process.env ??= {};
-import { n as __exportAll } from "./rolldown-runtime_BDykq6kg.mjs";
+import { n as __exportAll, r as __toESM } from "./rolldown-runtime_BDykq6kg.mjs";
 import { B as createAstro, O as renderTemplate, S as renderComponent } from "./sequence_Cy34-R2h.mjs";
 import { t as require_react } from "./react_DrT0j-Yv.mjs";
 import { t as createComponent } from "./compiler_QGfFmrLY.mjs";
@@ -9,10 +9,44 @@ import { t as $$PublicLayout } from "./PublicLayout_BSjpQger.mjs";
 import { f as CircleCheck, t as Button } from "./button_B108Y4ZG.mjs";
 import { t as require_jsx_runtime } from "./jsx-runtime_kxRjB8xb.mjs";
 import { env } from "cloudflare:workers";
-require_react();
+//#region src/components/jobs/JobDetails.tsx
+var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-function JobDetails({ job }) {
+function JobDetails({ job, user }) {
 	const isClosed = job.status !== "PUBLISHED" || !job.acceptingApplications;
+	const [isApplying, setIsApplying] = (0, import_react.useState)(false);
+	const [applyMessage, setApplyMessage] = (0, import_react.useState)(null);
+	const handleApply = async () => {
+		if (!user) {
+			window.location.href = `/login?redirectTo=/jobs/${job.id}`;
+			return;
+		}
+		if (user.role !== "CANDIDATE") {
+			setApplyMessage({
+				type: "error",
+				text: "Only candidates can apply for jobs."
+			});
+			return;
+		}
+		setIsApplying(true);
+		setApplyMessage(null);
+		try {
+			const res = await fetch(`/api/jobs/${job.id}/apply`, { method: "POST" });
+			const data = await res.json();
+			if (!res.ok) throw new Error(data.error || "Failed to apply");
+			setApplyMessage({
+				type: "success",
+				text: "Application submitted successfully!"
+			});
+		} catch (err) {
+			setApplyMessage({
+				type: "error",
+				text: err.message
+			});
+		} finally {
+			setIsApplying(false);
+		}
+	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "max-w-4xl mx-auto py-12 px-4",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -36,10 +70,18 @@ function JobDetails({ job }) {
 						className: "bg-muted text-muted-foreground cursor-not-allowed",
 						disabled: true,
 						children: "Applications Closed"
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						size: "lg",
-						className: "bg-primary hover:bg-primary/90",
-						children: "Apply Now"
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-col items-end gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							size: "lg",
+							className: "bg-primary hover:bg-primary/90",
+							onClick: handleApply,
+							disabled: isApplying,
+							children: isApplying ? "Applying..." : "Apply Now"
+						}), applyMessage && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: `text-sm ${applyMessage.type === "success" ? "text-green-600" : "text-destructive"}`,
+							children: applyMessage.text
+						})]
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -152,8 +194,10 @@ var $$Slug = createComponent(async ($$result, $$props, $$slots) => {
 		acceptingApplications: jobData.job.acceptingApplications,
 		description: jobData.job.description
 	};
+	const user = Astro.locals.user || null;
 	return renderTemplate`${renderComponent($$result, "PublicLayout", $$PublicLayout, {}, { "default": ($$result) => renderTemplate`${renderComponent($$result, "JobDetails", JobDetails, {
 		"job": formattedJob,
+		"user": user,
 		"client:load": true,
 		"client:component-hydration": "load",
 		"client:component-path": "C:/Users/abdur/OneDrive/Desktop/Abdurrahman/Abdurrahman_Developer/Techily_Fly/Techily_Fly_International/WebAndApp/Web/src/components/jobs/JobDetails.tsx",

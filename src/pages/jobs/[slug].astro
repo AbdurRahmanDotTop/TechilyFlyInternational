@@ -37,8 +37,9 @@ const formattedJob = {
   acceptingApplications: jobData.job.acceptingApplications,
   description: jobData.job.description,
 };
+const user = Astro.locals.user || null;
 ---
 
 <PublicLayout>
-  <JobDetails job={formattedJob} client:load />
+  <JobDetails job={formattedJob} user={user} client:load />
 </PublicLayout>
