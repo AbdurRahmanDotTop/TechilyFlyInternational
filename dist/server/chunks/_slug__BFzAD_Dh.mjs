@@ -4,7 +4,7 @@ import { n as __exportAll } from "./rolldown-runtime_BDykq6kg.mjs";
 import { B as createAstro, O as renderTemplate, S as renderComponent } from "./sequence_Cy34-R2h.mjs";
 import { t as require_react } from "./react_DrT0j-Yv.mjs";
 import { t as createComponent } from "./compiler_QGfFmrLY.mjs";
-import { t as $$PublicLayout } from "./PublicLayout_CJ-iWgKi.mjs";
+import { t as $$PublicLayout } from "./PublicLayout_BsgLhiJR.mjs";
 import { r as Button, t as CircleCheck } from "./circle-check_CrCMRUfo.mjs";
 import { t as require_jsx_runtime } from "./jsx-runtime_kxRjB8xb.mjs";
 require_react();

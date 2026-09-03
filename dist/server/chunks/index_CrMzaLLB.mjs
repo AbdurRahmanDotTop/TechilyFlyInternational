@@ -4,7 +4,7 @@ import { n as __exportAll, r as __toESM } from "./rolldown-runtime_BDykq6kg.mjs"
 import { O as renderTemplate, S as renderComponent } from "./sequence_Cy34-R2h.mjs";
 import { t as require_react } from "./react_DrT0j-Yv.mjs";
 import { t as createComponent } from "./compiler_QGfFmrLY.mjs";
-import { t as $$PublicLayout } from "./PublicLayout_CJ-iWgKi.mjs";
+import { t as $$PublicLayout } from "./PublicLayout_BsgLhiJR.mjs";
 import { a as useRenderElement, c as formatErrorMessage, d as useRefWithInit, f as SafeReact, i as cn, l as useIsoLayoutEffect, n as createLucideIcon, o as EMPTY_OBJECT, p as isElement, r as Button, s as NOOP, t as CircleCheck, u as useStableCallback } from "./circle-check_CrCMRUfo.mjs";
 import { t as require_jsx_runtime } from "./jsx-runtime_kxRjB8xb.mjs";
 //#region node_modules/@base-ui/utils/owner.mjs
@@ -405,6 +405,92 @@ function Input({ className, type, ...props }) {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ArrowRight = createLucideIcon("arrow-right", [["path", {
+	d: "M5 12h14",
+	key: "1ays0h"
+}], ["path", {
+	d: "m12 5 7 7-7 7",
+	key: "xquz4c"
+}]]);
+/**
+* @license lucide-react v1.39.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Briefcase = createLucideIcon("briefcase", [["path", {
+	d: "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16",
+	key: "jecpp"
+}], ["rect", {
+	width: "20",
+	height: "14",
+	x: "2",
+	y: "6",
+	rx: "2",
+	key: "i6l2r4"
+}]]);
+/**
+* @license lucide-react v1.39.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Building = createLucideIcon("building", [
+	["path", {
+		d: "M12 10h.01",
+		key: "1nrarc"
+	}],
+	["path", {
+		d: "M12 14h.01",
+		key: "1etili"
+	}],
+	["path", {
+		d: "M12 6h.01",
+		key: "1vi96p"
+	}],
+	["path", {
+		d: "M16 10h.01",
+		key: "1m94wz"
+	}],
+	["path", {
+		d: "M16 14h.01",
+		key: "1gbofw"
+	}],
+	["path", {
+		d: "M16 6h.01",
+		key: "1x0f13"
+	}],
+	["path", {
+		d: "M8 10h.01",
+		key: "19clt8"
+	}],
+	["path", {
+		d: "M8 14h.01",
+		key: "6423bh"
+	}],
+	["path", {
+		d: "M8 6h.01",
+		key: "1dz90k"
+	}],
+	["path", {
+		d: "M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3",
+		key: "cabbwy"
+	}],
+	["rect", {
+		x: "4",
+		y: "2",
+		width: "16",
+		height: "20",
+		rx: "2",
+		key: "1uxh74"
+	}]
+]);
+/**
+* @license lucide-react v1.39.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var MapPin = createLucideIcon("map-pin", [["path", {
 	d: "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0",
 	key: "1r0f0z"
@@ -433,129 +519,218 @@ var Search = createLucideIcon("search", [["path", {
 //#region src/components/Home.tsx
 function Home() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "flex flex-col",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-			className: "bg-gradient-to-br from-foreground via-foreground/90 to-foreground/80 text-white py-24 px-4",
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "max-w-5xl mx-auto text-center",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						className: "text-5xl md:text-6xl font-extrabold tracking-tight mb-6",
-						children: "Find Your Next Career in the Gulf"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-xl md:text-2xl text-primary-foreground mb-10 max-w-3xl mx-auto",
-						children: "Connect with top verified employers across the UAE, Saudi Arabia, Qatar, and beyond."
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "bg-white p-2 rounded-xl shadow-2xl flex flex-col md:flex-row gap-2 max-w-4xl mx-auto",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative flex-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "absolute left-3 top-3 h-5 w-5 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									placeholder: "Job title, keyword, or company",
-									className: "pl-10 h-12 text-lg border-0 focus-visible:ring-0 text-foreground"
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "hidden md:block w-px bg-border my-2" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative flex-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, { className: "absolute left-3 top-3 h-5 w-5 text-muted-foreground" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-									placeholder: "City or Country",
-									className: "pl-10 h-12 text-lg border-0 focus-visible:ring-0 text-foreground"
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+		className: "flex flex-col w-full overflow-hidden",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "relative pt-32 pb-24 md:pt-40 md:pb-32 px-4 flex items-center justify-center min-h-[70vh]",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "absolute inset-0 bg-background overflow-hidden z-0",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-primary/10 blur-[120px] mix-blend-multiply" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[100px] mix-blend-multiply" })]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "max-w-5xl mx-auto text-center relative z-10",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "relative flex h-2 w-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "relative inline-flex rounded-full h-2 w-2 bg-primary" })]
+							}), "Over 5,000+ Active Opportunities"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h1", {
+							className: "text-5xl md:text-7xl font-extrabold text-foreground tracking-tight mb-8 leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100",
+							children: [
+								"Find Your Next ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+								" ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#ff9b85]",
+									children: "Career in the Gulf"
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto font-medium leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200",
+							children: "Connect with top verified employers across the UAE, Saudi Arabia, Qatar, and beyond."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "bg-white/70 backdrop-blur-md p-3 md:p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white/50 flex flex-col md:flex-row gap-3 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "relative flex-1 group",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										placeholder: "Job title, keyword, or company",
+										className: "pl-12 h-14 text-lg border-0 bg-transparent focus-visible:ring-0 shadow-none font-medium placeholder:font-normal text-foreground"
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "hidden md:block w-px bg-border my-2" }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "relative flex-1 group",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, { className: "absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										placeholder: "City or Country",
+										className: "pl-12 h-14 text-lg border-0 bg-transparent focus-visible:ring-0 shadow-none font-medium placeholder:font-normal text-foreground"
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									size: "lg",
+									className: "h-14 px-10 bg-primary hover:bg-primary/90 text-lg font-bold shadow-lg shadow-primary/25 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]",
+									children: "Search Jobs"
+								})
+							]
+						})
+					]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+				className: "py-24 px-4 bg-muted/30 relative",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "max-w-6xl mx-auto",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-col md:flex-row justify-between items-end mb-12",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "text-3xl md:text-4xl font-extrabold text-foreground mb-4",
+								children: "Recommended Roles"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-muted-foreground text-lg",
+								children: "Curated opportunities matching your profile"
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+								href: "#",
+								className: "hidden md:flex items-center text-primary font-bold hover:gap-2 transition-all gap-1 mt-4 md:mt-0",
+								children: ["View all jobs ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "w-4 h-4" })]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid grid-cols-1 md:grid-cols-2 gap-6",
+							children: [
+								{
+									id: "1",
+									slug: "senior-software-engineer-dubai",
+									title: "Senior Software Engineer",
+									employer: "Tech Corp Gulf",
+									isVerified: true,
+									location: "Dubai, UAE",
+									posted: "2 days ago",
+									type: "Full-time"
+								},
+								{
+									id: "2",
+									slug: "marketing-director-riyadh",
+									title: "Marketing Director",
+									employer: "Desert Oasis Group",
+									isVerified: false,
+									location: "Riyadh, Saudi Arabia",
+									posted: "1 week ago",
+									type: "Full-time"
+								},
+								{
+									id: "3",
+									slug: "civil-engineer-doha",
+									title: "Civil Engineer",
+									employer: "Al-Khaleej Constructions",
+									isVerified: true,
+									location: "Doha, Qatar",
+									posted: "3 hours ago",
+									type: "Contract"
+								},
+								{
+									id: "4",
+									slug: "finance-manager-manama",
+									title: "Finance Manager",
+									employer: "Global Investments Gulf",
+									isVerified: true,
+									location: "Manama, Bahrain",
+									posted: "12 hours ago",
+									type: "Full-time"
+								}
+							].map((job) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+								href: `/jobs/${job.slug}`,
+								className: "block group",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "bg-card p-8 rounded-2xl border border-border/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "relative z-10 flex flex-col h-full",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex justify-between items-start mb-6",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+													className: "w-12 h-12 rounded-lg bg-muted flex items-center justify-center shrink-0",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Building, { className: "w-6 h-6 text-foreground/50" })
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "bg-secondary px-3 py-1.5 rounded-md text-xs font-bold text-foreground",
+													children: job.type
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+												className: "text-2xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-1",
+												children: job.title
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center text-muted-foreground mb-6",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "font-medium text-foreground/80",
+													children: job.employer
+												}), job.isVerified && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "ml-1.5 flex items-center",
+													title: "Verified Employer",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "h-4 w-4 fill-primary text-primary-foreground" })
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "mt-auto pt-6 border-t border-border flex items-center justify-between text-sm text-muted-foreground font-medium",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+													className: "flex items-center gap-1.5",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, { className: "h-4 w-4 text-foreground/40" }), job.location]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+													className: "flex items-center gap-1.5",
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Briefcase, { className: "h-4 w-4 text-foreground/40" }), job.posted]
+												})]
+											})
+										]
+									})]
+								})
+							}, job.id))
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-10 text-center md:hidden",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								className: "w-full text-primary border-primary hover:bg-primary hover:text-white",
+								children: "View all jobs"
+							})
+						})
+					]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "py-24 px-4 bg-foreground text-white relative overflow-hidden",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent opacity-50" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "max-w-4xl mx-auto text-center relative z-10",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+							className: "text-4xl md:text-5xl font-extrabold tracking-tight mb-6",
+							children: "Ready to accelerate your hiring?"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xl text-muted-foreground mb-10 max-w-2xl mx-auto",
+							children: "Join thousands of companies using Techily Fly International to build their dream teams across the Middle East."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-col sm:flex-row gap-4 justify-center",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 								size: "lg",
-								className: "h-12 px-8 bg-primary hover:bg-primary/90 text-lg",
-								children: "Search Jobs"
-							})
-						]
-					})
-				]
+								className: "h-14 px-8 bg-primary hover:bg-primary/90 text-lg font-bold rounded-xl transition-transform hover:scale-105",
+								children: "Post a Job Now"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								size: "lg",
+								variant: "outline",
+								className: "h-14 px-8 text-lg font-bold rounded-xl border-white/20 hover:bg-white/10 hover:text-white transition-colors bg-transparent text-white",
+								children: "Contact Sales"
+							})]
+						})
+					]
+				})]
 			})
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "py-16 px-4 max-w-5xl mx-auto w-full",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-				className: "text-2xl font-bold mb-8 text-foreground",
-				children: "Recommended Roles"
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "space-y-4",
-				children: [
-					{
-						id: "1",
-						slug: "senior-software-engineer-dubai",
-						title: "Senior Software Engineer",
-						employer: "Tech Corp Gulf",
-						isVerified: true,
-						location: "Dubai, UAE",
-						posted: "2 days ago",
-						type: "Full-time"
-					},
-					{
-						id: "2",
-						slug: "marketing-director-riyadh",
-						title: "Marketing Director",
-						employer: "Desert Oasis Group",
-						isVerified: false,
-						location: "Riyadh, Saudi Arabia",
-						posted: "1 week ago",
-						type: "Full-time"
-					},
-					{
-						id: "3",
-						slug: "civil-engineer-doha",
-						title: "Civil Engineer",
-						employer: "Al-Khaleej Constructions",
-						isVerified: true,
-						location: "Doha, Qatar",
-						posted: "3 hours ago",
-						type: "Contract"
-					}
-				].map((job) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-					href: `/jobs/${job.slug}`,
-					className: "block",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "bg-white p-6 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "text-xl font-bold text-foreground group-hover:text-primary transition-colors",
-								children: job.title
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center mt-2 text-muted-foreground",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "font-medium",
-									children: job.employer
-								}), job.isVerified && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "ml-1.5 flex items-center text-primary",
-									title: "Verified Employer",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "h-4 w-4 fill-primary text-primary-foreground" })
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-4 mt-3 text-sm text-muted-foreground",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "flex items-center",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, { className: "h-4 w-4 mr-1" }), job.location]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "bg-secondary px-2 py-1 rounded text-xs font-medium",
-										children: job.type
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: job.posted })
-								]
-							})
-						] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							variant: "outline",
-							className: "shrink-0 group-hover:bg-primary/10 group-hover:text-primary/90 group-hover:border-primary/20",
-							children: "View Details"
-						})]
-					})
-				}, job.id))
-			})]
-		})]
+		]
 	});
 }
 //#endregion
