@@ -115,3 +115,5 @@ export default function CandidateProfilePage() {
     </div>
   );
 }
+
+export const runtime = 'edge';

@@ -6,3 +6,5 @@ export default function CandidateDashboard() {
     </div>
   );
 }
+
+export const runtime = 'edge';

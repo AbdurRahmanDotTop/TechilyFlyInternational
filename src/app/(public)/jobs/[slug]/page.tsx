@@ -55,3 +55,5 @@ export default function JobDetailsPage({ params }: { params: { slug: string } })
     </div>
   );
 }
+
+export const runtime = 'edge';

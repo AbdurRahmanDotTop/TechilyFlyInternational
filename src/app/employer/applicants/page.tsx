@@ -45,3 +45,5 @@ export default function EmployerApplicantsPage() {
     </div>
   );
 }
+
+export const runtime = 'edge';

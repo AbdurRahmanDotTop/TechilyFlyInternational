@@ -29,3 +29,5 @@ export default function ExpiredJobsPage() {
     </div>
   );
 }
+
+export const runtime = 'edge';

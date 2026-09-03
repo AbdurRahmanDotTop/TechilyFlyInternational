@@ -8,3 +8,5 @@ export default function NewJobPage() {
     </div>
   );
 }
+
+export const runtime = 'edge';

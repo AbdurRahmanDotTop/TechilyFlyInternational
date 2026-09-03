@@ -50,3 +50,5 @@ export default function AdminJobsPage() {
     </div>
   );
 }
+
+export const runtime = 'edge';
