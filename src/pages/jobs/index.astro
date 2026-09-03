@@ -4,8 +4,8 @@ import { getDb } from '../../lib/db';
 import { jobs } from '../../lib/db/schema';
 import { like, or, and } from 'drizzle-orm';
 import { Search, MapPin, Briefcase, Calendar } from 'lucide-react';
+import { env } from 'cloudflare:workers';
 
-const env = Astro.locals.runtime.env;
 const searchParams = Astro.url.searchParams;
 const q = searchParams.get('q') || '';
 const location = searchParams.get('location') || '';

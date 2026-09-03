@@ -1,10 +1,44 @@
 ---
 import PublicLayout from '../../layouts/PublicLayout.astro';
 import JobDetails from '../../components/jobs/JobDetails';
+import { getDb } from '../../lib/db';
+import { jobs, employers } from '../../lib/db/schema';
+import { eq } from 'drizzle-orm';
+import { env } from 'cloudflare:workers';
 
 const { slug } = Astro.params;
+
+const db = getDb(env);
+
+// Fetch job and employer details
+const jobData = await db
+  .select({
+    job: jobs,
+    employer: employers,
+  })
+  .from(jobs)
+  .leftJoin(employers, eq(jobs.employerId, employers.id))
+  .where(eq(jobs.slug, slug as string))
+  .get();
+
+if (!jobData) {
+  return Astro.redirect('/404');
+}
+
+const formattedJob = {
+  id: jobData.job.id,
+  title: jobData.job.title,
+  employer: jobData.employer?.companyName || 'Unknown Employer',
+  isVerified: jobData.employer?.verificationStatus === 'VERIFIED',
+  country: jobData.job.country,
+  city: jobData.job.city,
+  expiry: new Date(jobData.job.expiryAt).toLocaleDateString(),
+  status: jobData.job.status,
+  acceptingApplications: jobData.job.acceptingApplications,
+  description: jobData.job.description,
+};
 ---
 
 <PublicLayout>
-  <JobDetails slug={slug || ''} client:load />
+  <JobDetails job={formattedJob} client:load />
 </PublicLayout>

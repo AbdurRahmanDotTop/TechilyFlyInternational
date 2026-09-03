@@ -9,6 +9,11 @@ interface Job {
   country: string | null;
   status: string;
   slug: string;
+  employerId: string;
+  acceptingApplications: boolean;
+  expiryAt: string;
+  publishedAt?: string;
+  closedAt?: string;
 }
 
 export function AdminJobActions({ job }: { job: Job }) {
@@ -152,17 +157,71 @@ export function AdminJobActions({ job }: { job: Job }) {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-1">Status</label>
-                <select 
-                  value={formData.status} 
-                  onChange={e => setFormData({...formData, status: e.target.value})}
-                  className="w-full border border-input bg-background px-3 py-2 rounded-md"
-                >
-                  <option value="DRAFT">DRAFT</option>
-                  <option value="PUBLISHED">PUBLISHED</option>
-                  <option value="REJECTED">REJECTED</option>
-                </select>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Slug</label>
+                  <input 
+                    type="text" 
+                    value={formData.slug || ''} 
+                    onChange={e => setFormData({...formData, slug: e.target.value})}
+                    className="w-full border border-input bg-background px-3 py-2 rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Employer ID</label>
+                  <input 
+                    type="text" 
+                    value={formData.employerId || ''} 
+                    onChange={e => setFormData({...formData, employerId: e.target.value})}
+                    className="w-full border border-input bg-background px-3 py-2 rounded-md"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Expiry Date</label>
+                  <input 
+                    type="date" 
+                    value={formData.expiryAt ? new Date(formData.expiryAt).toISOString().split('T')[0] : ''} 
+                    onChange={e => setFormData({...formData, expiryAt: e.target.value})}
+                    className="w-full border border-input bg-background px-3 py-2 rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Published Date</label>
+                  <input 
+                    type="date" 
+                    value={formData.publishedAt ? new Date(formData.publishedAt).toISOString().split('T')[0] : ''} 
+                    onChange={e => setFormData({...formData, publishedAt: e.target.value})}
+                    className="w-full border border-input bg-background px-3 py-2 rounded-md"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Status</label>
+                  <select 
+                    value={formData.status} 
+                    onChange={e => setFormData({...formData, status: e.target.value})}
+                    className="w-full border border-input bg-background px-3 py-2 rounded-md"
+                  >
+                    <option value="DRAFT">DRAFT</option>
+                    <option value="PUBLISHED">PUBLISHED</option>
+                    <option value="REJECTED">REJECTED</option>
+                  </select>
+                </div>
+                <div className="flex items-center gap-2 mt-6">
+                  <input 
+                    type="checkbox" 
+                    id="acceptingApplications"
+                    checked={formData.acceptingApplications} 
+                    onChange={e => setFormData({...formData, acceptingApplications: e.target.checked})}
+                    className="w-4 h-4 rounded border-gray-300"
+                  />
+                  <label htmlFor="acceptingApplications" className="text-sm font-medium">Accepting Applications</label>
+                </div>
               </div>
               
               <div>

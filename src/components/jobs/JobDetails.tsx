@@ -2,18 +2,21 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 
-export default function JobDetails({ slug }: { slug: string }) {
-  // Mock data for MVP
-  const job = {
-    title: "Senior Software Engineer",
-    employer: "Tech Corp Gulf",
-    country: "United Arab Emirates",
-    city: "Dubai",
-    expiry: "2024-12-31",
-    status: "EXPIRED", 
-    isVerified: true,
-    description: "We are looking for a Senior Software Engineer with 5+ years of experience in React and Node.js to join our expanding team in Dubai."
-  };
+interface JobProps {
+  id: string;
+  title: string;
+  employer: string;
+  isVerified: boolean;
+  country: string | null;
+  city: string | null;
+  expiry: string;
+  status: string;
+  acceptingApplications: boolean;
+  description: string;
+}
+
+export default function JobDetails({ job }: { job: JobProps }) {
+  const isClosed = job.status !== 'PUBLISHED' || !job.acceptingApplications;
 
   return (
     <div className="max-w-4xl mx-auto py-12 px-4">
@@ -30,7 +33,7 @@ export default function JobDetails({ slug }: { slug: string }) {
               )}
             </div>
           </div>
-          {job.status === "EXPIRED" ? (
+          {isClosed ? (
             <Button size="lg" variant="secondary" className="bg-muted text-muted-foreground cursor-not-allowed" disabled>
               Applications Closed
             </Button>

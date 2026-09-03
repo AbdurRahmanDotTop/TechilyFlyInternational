@@ -1,10 +1,18 @@
 ---
 import Layout from './Layout.astro';
+const { title } = Astro.props;
 ---
-<Layout>
+<Layout title={title}>
     <div class="flex flex-col min-h-screen">
       <header class="border-b bg-white p-4 flex justify-between items-center sticky top-0 z-40">
-        <h2 class="text-xl font-bold text-primary">Candidate Portal</h2>
+        <div class="flex items-center gap-4">
+          <a href="/" class="text-xl font-bold tracking-tight">
+            <span class="text-primary">Techily Fly</span>
+            <span class="text-foreground ml-1">International</span>
+          </a>
+          <span class="text-muted-foreground">|</span>
+          <h2 class="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Candidate Portal</h2>
+        </div>
         <nav class="space-x-6 flex items-center">
           <a href="/candidate" class="text-sm font-medium hover:text-primary transition-colors">Dashboard</a>
           <a href="/candidate/profile" class="text-sm font-medium hover:text-primary transition-colors">Profile</a>

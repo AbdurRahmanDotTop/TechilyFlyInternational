@@ -1,0 +1,50 @@
+---
+export const prerender = false;
+import Layout from '../layouts/Layout.astro';
+import { env } from 'cloudflare:workers';
+import { getDb } from '../lib/db';
+import { users } from '../lib/db/schema';
+
+let envCheck = {
+  hasEnv: !!env,
+  hasDbBinding: env ? !!env.DB : false,
+  dbType: env && env.DB ? typeof env.DB : 'none'
+};
+
+let errorMsg = '';
+let dbUsers = [];
+try {
+  const db = getDb(env);
+  dbUsers = await db.select().from(users).all();
+} catch (e: any) {
+  errorMsg = String(e) + '\n' + e.stack;
+}
+---
+
+<Layout title="Test Env">
+  <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold mb-8">Environment Test</h1>
+    
+    <div class="space-y-6">
+      <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Worker Env Check</h3>
+        <pre class="bg-gray-100 p-4 rounded overflow-x-auto"><code>{JSON.stringify(envCheck, null, 2)}</code></pre>
+      </div>
+
+      <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">DB Users Test</h3>
+        {errorMsg ? (
+          <div class="p-4 bg-red-50 text-red-700 rounded-md">
+            <h4 class="font-bold">Database Error:</h4>
+            <pre class="mt-2 text-sm whitespace-pre-wrap">{errorMsg}</pre>
+          </div>
+        ) : (
+          <div>
+            <p class="text-green-600 font-bold mb-4">Successfully connected to database!</p>
+            <p>Users count: {dbUsers.length}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -3,49 +3,22 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, MapPin, CheckCircle2, Building, Briefcase, ArrowRight } from 'lucide-react';
 
-export default function Home() {
-  const jobs = [
-    {
-      id: '1',
-      slug: 'senior-software-engineer-dubai',
-      title: 'Senior Software Engineer',
-      employer: 'Tech Corp Gulf',
-      isVerified: true,
-      location: 'Dubai, UAE',
-      posted: '2 days ago',
-      type: 'Full-time'
-    },
-    {
-      id: '2',
-      slug: 'marketing-director-riyadh',
-      title: 'Marketing Director',
-      employer: 'Desert Oasis Group',
-      isVerified: false,
-      location: 'Riyadh, Saudi Arabia',
-      posted: '1 week ago',
-      type: 'Full-time'
-    },
-    {
-      id: '3',
-      slug: 'civil-engineer-doha',
-      title: 'Civil Engineer',
-      employer: 'Al-Khaleej Constructions',
-      isVerified: true,
-      location: 'Doha, Qatar',
-      posted: '3 hours ago',
-      type: 'Contract'
-    },
-    {
-      id: '4',
-      slug: 'finance-manager-manama',
-      title: 'Finance Manager',
-      employer: 'Global Investments Gulf',
-      isVerified: true,
-      location: 'Manama, Bahrain',
-      posted: '12 hours ago',
-      type: 'Full-time'
-    }
-  ];
+export default function Home({ initialJobs = [] }: { initialJobs?: any[] }) {
+  const jobs = initialJobs.map(job => {
+    // Format the posted time
+    const postDate = new Date(job.posted);
+    const diffTime = Math.abs(new Date().getTime() - postDate.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    let postedString = `${diffDays} days ago`;
+    if (diffDays === 1) postedString = '1 day ago';
+    else if (diffDays === 0) postedString = 'Today';
+    
+    return {
+      ...job,
+      posted: postedString
+    };
+  });
 
   return (
     <div className="flex flex-col w-full overflow-hidden">

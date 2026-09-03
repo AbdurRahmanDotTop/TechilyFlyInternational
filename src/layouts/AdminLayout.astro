@@ -1,11 +1,18 @@
 ---
 import Layout from './Layout.astro';
+const { title } = Astro.props;
 ---
-<Layout>
+<Layout title={title}>
     <div class="flex min-h-screen">
       <aside class="w-64 bg-foreground text-white p-6 flex flex-col justify-between">
         <div>
-          <h2 class="text-xl font-bold mb-6 text-primary tracking-tight">Admin Panel</h2>
+          <div class="mb-6">
+            <a href="/" class="text-xl font-bold tracking-tight block mb-2">
+              <span class="text-primary">Techily Fly</span>
+              <span class="text-white ml-1">International</span>
+            </a>
+            <h2 class="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Admin Panel</h2>
+          </div>
           <nav class="space-y-2">
             <a href="/admin" class="block px-4 py-2 rounded bg-foreground/80">Dashboard</a>
             <a href="/admin/jobs" class="block px-4 py-2 rounded hover:bg-foreground/80">Jobs Queue</a>

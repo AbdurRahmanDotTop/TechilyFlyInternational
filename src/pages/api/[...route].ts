@@ -2,9 +2,9 @@ import { Hono } from 'hono';
 import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
 import { getDb } from '../../lib/db';
-import { jobs, users, candidateProfiles, employers } from '../../lib/db/schema';
+import { jobs, users, candidateProfiles, employers, sessions, applications } from '../../lib/db/schema';
 import { getAuth } from '../../lib/auth';
-import { eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 
 async function hashPassword(password: string) {
   const msgUint8 = new TextEncoder().encode(password);
@@ -174,10 +174,16 @@ app.put('/admin/jobs/:id', async (c) => {
   
   await db.update(jobs).set({
     title: data.title,
+    slug: data.slug,
     description: data.description,
     city: data.city,
     country: data.country,
     status: data.status,
+    employerId: data.employerId,
+    acceptingApplications: data.acceptingApplications,
+    expiryAt: data.expiryAt,
+    publishedAt: data.publishedAt,
+    closedAt: data.closedAt,
   }).where(eq(jobs.id, id));
   return c.json({ success: true });
 });
@@ -211,16 +217,27 @@ app.put('/admin/users/:id/role', async (c) => {
   return c.json({ success: true });
 });
 
+app.put('/admin/users/:id', async (c) => {
+  const admin = await requireAdmin(c);
+  if (!admin) return c.json({ error: 'Unauthorized' }, 403);
+  
+  const id = c.req.param('id');
+  const data = await c.req.json();
+  const db = getDb(c.env);
+  
+  await db.update(users).set({ 
+    email: data.email,
+    role: data.role 
+  }).where(eq(users.id, id));
+  return c.json({ success: true });
+});
+
 app.delete('/admin/users/:id', async (c) => {
   const admin = await requireAdmin(c);
   if (!admin) return c.json({ error: 'Unauthorized' }, 403);
   
   const id = c.req.param('id');
   const db = getDb(c.env);
-  
-  const { sessions, applications } = await import('../../lib/db/schema');
-  const { inArray } = await import('drizzle-orm');
-  
   // 1. Delete Employer data
   const employer = await db.select().from(employers).where(eq(employers.userId, id)).get();
   if (employer) {

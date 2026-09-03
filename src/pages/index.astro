@@ -1,8 +1,39 @@
 ---
 import PublicLayout from '../layouts/PublicLayout.astro';
 import Home from '../components/Home';
+import { getDb } from '../lib/db';
+import { jobs, employers } from '../lib/db/schema';
+import { eq, desc } from 'drizzle-orm';
+import { env } from 'cloudflare:workers';
+
+const db = getDb(env);
+
+// Fetch top 4 most recently published jobs
+const topJobsRows = await db
+  .select({
+    job: jobs,
+    employer: employers,
+  })
+  .from(jobs)
+  .leftJoin(employers, eq(jobs.employerId, employers.id))
+  .where(eq(jobs.status, 'PUBLISHED'))
+  .orderBy(desc(jobs.createdAt))
+  .limit(4)
+  .all();
+
+// Format data for the Home component
+const fetchedJobs = topJobsRows.map(({ job, employer }) => ({
+  id: job.id,
+  slug: job.slug,
+  title: job.title,
+  employer: employer?.companyName || 'Unknown Employer',
+  isVerified: employer?.verificationStatus === 'VERIFIED',
+  location: [job.city, job.country].filter(Boolean).join(', ') || 'Remote',
+  posted: new Date(job.createdAt).toISOString(),
+  type: 'Full-time' // Default for now as schema doesn't have type
+}));
 ---
 
 <PublicLayout>
-  <Home client:load />
+  <Home client:load initialJobs={fetchedJobs} />
 </PublicLayout>
