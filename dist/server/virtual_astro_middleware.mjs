@@ -10,7 +10,7 @@ var onRequest$1 = defineMiddleware(async (context, next) => {
 	const isCandidateRoute = url.pathname.startsWith("/candidate");
 	const isAdminRoute = url.pathname.startsWith("/admin");
 	if (isEmployerRoute || isCandidateRoute || isAdminRoute) {
-		const dbEnv = context.locals?.runtime?.env || env;
+		const dbEnv = env;
 		if (!dbEnv) console.warn("No env found in middleware");
 		const lucia = getAuth(dbEnv);
 		const sessionId = cookies.get(lucia.sessionCookieName)?.value ?? null;

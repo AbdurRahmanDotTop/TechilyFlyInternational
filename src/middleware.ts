@@ -11,8 +11,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const isAdminRoute = url.pathname.startsWith('/admin');
 
   if (isEmployerRoute || isCandidateRoute || isAdminRoute) {
-    // Attempt to get env from context locals first, fallback to cloudflare:workers env
-    const dbEnv = (context.locals as any)?.runtime?.env || env;
+    const dbEnv = env;
     if (!dbEnv) {
       console.warn("No env found in middleware");
     }
