@@ -3,6 +3,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
 import { getDb } from '../../lib/db';
 import { users } from '../../lib/db/schema';
 import { env } from 'cloudflare:workers';
+import { AdminUserActions } from '../../components/admin/AdminUserActions';
 
 const db = getDb(env);
 const allUsers = await db.select().from(users).all();
@@ -29,6 +30,7 @@ const allUsers = await db.select().from(users).all();
                 <th class="px-6 py-4 font-medium text-muted-foreground">Email</th>
                 <th class="px-6 py-4 font-medium text-muted-foreground">Role</th>
                 <th class="px-6 py-4 font-medium text-muted-foreground">Joined At</th>
+                <th class="px-6 py-4 font-medium text-muted-foreground">Action</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-border">
@@ -47,6 +49,9 @@ const allUsers = await db.select().from(users).all();
                   </td>
                   <td class="px-6 py-4 text-muted-foreground">
                     {new Date(user.createdAt).toLocaleDateString()}
+                  </td>
+                  <td class="px-6 py-4">
+                    <AdminUserActions client:load user={{ id: user.id, email: user.email, role: user.role }} />
                   </td>
                 </tr>
               ))}

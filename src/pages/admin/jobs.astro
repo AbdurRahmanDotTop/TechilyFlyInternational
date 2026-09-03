@@ -3,6 +3,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
 import { getDb } from '../../lib/db';
 import { jobs } from '../../lib/db/schema';
 import { env } from 'cloudflare:workers';
+import { AdminJobActions } from '../../components/admin/AdminJobActions';
 
 const db = getDb(env);
 const allJobs = await db.select().from(jobs).all();
@@ -48,7 +49,10 @@ const allJobs = await db.select().from(jobs).all();
                     </span>
                   </td>
                   <td class="px-6 py-4">
-                    <a href={`/jobs/${job.slug}`} target="_blank" class="text-primary hover:underline text-sm font-medium">View</a>
+                    <div class="flex items-center gap-3">
+                      <a href={`/jobs/${job.slug}`} target="_blank" class="text-primary hover:underline text-sm font-medium mr-2">View</a>
+                      <AdminJobActions client:load job={job} />
+                    </div>
                   </td>
                 </tr>
               ))}

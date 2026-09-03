@@ -142,6 +142,111 @@ app.post('/jobs', async (c) => {
   }
 });
 
+async function requireAdmin(c: any) {
+  const lucia = getAuth(c.env);
+  const sessionId = lucia.readSessionCookie(c.req.header('Cookie') ?? "");
+  if (!sessionId) return null;
+  const { user } = await lucia.validateSession(sessionId);
+  if (!user || user.role !== 'ADMIN') return null;
+  return user;
+}
+
+// Admin Routes
+app.put('/admin/jobs/:id/status', async (c) => {
+  const admin = await requireAdmin(c);
+  if (!admin) return c.json({ error: 'Unauthorized' }, 403);
+  
+  const id = c.req.param('id');
+  const { status } = await c.req.json();
+  const db = getDb(c.env);
+  
+  await db.update(jobs).set({ status }).where(eq(jobs.id, id));
+  return c.json({ success: true });
+});
+
+app.put('/admin/jobs/:id', async (c) => {
+  const admin = await requireAdmin(c);
+  if (!admin) return c.json({ error: 'Unauthorized' }, 403);
+  
+  const id = c.req.param('id');
+  const data = await c.req.json();
+  const db = getDb(c.env);
+  
+  await db.update(jobs).set({
+    title: data.title,
+    description: data.description,
+    city: data.city,
+    country: data.country,
+    status: data.status,
+  }).where(eq(jobs.id, id));
+  return c.json({ success: true });
+});
+
+app.delete('/admin/jobs/:id', async (c) => {
+  const admin = await requireAdmin(c);
+  if (!admin) return c.json({ error: 'Unauthorized' }, 403);
+  
+  const id = c.req.param('id');
+  const db = getDb(c.env);
+  
+  // Clean up related data manually to avoid FK constraint issues if cascade is disabled
+  // First delete applications for this job
+  const { applications } = await import('../../lib/db/schema');
+  await db.delete(applications).where(eq(applications.jobId, id));
+  // Then delete the job
+  await db.delete(jobs).where(eq(jobs.id, id));
+  
+  return c.json({ success: true });
+});
+
+app.put('/admin/users/:id/role', async (c) => {
+  const admin = await requireAdmin(c);
+  if (!admin) return c.json({ error: 'Unauthorized' }, 403);
+  
+  const id = c.req.param('id');
+  const { role } = await c.req.json();
+  const db = getDb(c.env);
+  
+  await db.update(users).set({ role }).where(eq(users.id, id));
+  return c.json({ success: true });
+});
+
+app.delete('/admin/users/:id', async (c) => {
+  const admin = await requireAdmin(c);
+  if (!admin) return c.json({ error: 'Unauthorized' }, 403);
+  
+  const id = c.req.param('id');
+  const db = getDb(c.env);
+  
+  const { sessions, applications } = await import('../../lib/db/schema');
+  const { inArray } = await import('drizzle-orm');
+  
+  // 1. Delete Employer data
+  const employer = await db.select().from(employers).where(eq(employers.userId, id)).get();
+  if (employer) {
+    const employerJobs = await db.select({ id: jobs.id }).from(jobs).where(eq(jobs.employerId, employer.id)).all();
+    const jobIds = employerJobs.map(j => j.id);
+    if (jobIds.length > 0) {
+      await db.delete(applications).where(inArray(applications.jobId, jobIds));
+      await db.delete(jobs).where(eq(jobs.employerId, employer.id));
+    }
+    await db.delete(employers).where(eq(employers.userId, id));
+  }
+  
+  // 2. Delete Candidate data
+  const candidate = await db.select().from(candidateProfiles).where(eq(candidateProfiles.userId, id)).get();
+  if (candidate) {
+    await db.delete(applications).where(eq(applications.candidateId, candidate.id));
+    await db.delete(candidateProfiles).where(eq(candidateProfiles.userId, id));
+  }
+  
+  // 3. Delete Sessions and User
+  await db.delete(sessions).where(eq(sessions.userId, id));
+  await db.delete(users).where(eq(users.id, id));
+  
+  return c.json({ success: true });
+});
+
 // Export all methods for Astro to handle
 const handleRequest: APIRoute = ({ request }) => {
   // Pass the request to Hono, along with Cloudflare environment variables
