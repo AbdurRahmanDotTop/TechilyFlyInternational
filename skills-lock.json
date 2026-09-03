@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "skills": {
+    "accessibility": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/accessibility/SKILL.md",
+      "computedHash": "88c64dead9bb55925c7b983f5fd95cfecf30bd8c076fd384cdb17019d1becd87"
+    },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "computedHash": "a674b7d81066e3cc471a7512ddb4ae724418cbfefa75cbb050b0dc430e4d57a0"
+    },
+    "agents-sdk": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/agents-sdk/SKILL.md",
+      "computedHash": "01515ef239bee4ab1464d0eb735a857de3832a304fccd9315bf439837c053e62"
+    },
+    "best-practices": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/best-practices/SKILL.md",
+      "computedHash": "fc34a8d4aea22d0158e0560457c82432e9d2d0ac74cf3e9aaccb599905f3f711"
+    },
+    "cloudflare": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cloudflare/SKILL.md",
+      "computedHash": "6f40bad7cb8529ee19b0f0cdd974b265fe7a0d104d61d066545b48f77ed42acf"
+    },
+    "cloudflare-email-service": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cloudflare-email-service/SKILL.md",
+      "computedHash": "bc81673db58eb488e06f59d48596a6aae563b7637cc11ea9bec42e43e818630d"
+    },
+    "cloudflare-one": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cloudflare-one/SKILL.md",
+      "computedHash": "be7a9490568452e0ea8b9575dc8ae4129f2f7e115403c3778544a79e35de6ce1"
+    },
+    "cloudflare-one-migrations": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cloudflare-one-migrations/SKILL.md",
+      "computedHash": "bc6c9fc5dbfcd512dbceb7c6940e351b617897ee2429561a183fef358b4fbef5"
+    },
+    "core-web-vitals": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/core-web-vitals/SKILL.md",
+      "computedHash": "ceaa3e9c9dfa6209ffe923714c0a093b950d0922213d0cf375c27f3d602cc857"
+    },
+    "deploy-to-vercel": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/deploy-to-vercel/SKILL.md",
+      "computedHash": "03e0eaaa9bf13ba1e7ffa387f5893de6f324c0868c627001f179395a8feaa7c9"
+    },
+    "durable-objects": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/durable-objects/SKILL.md",
+      "computedHash": "afa5e9dfcbbe3b70107d9f263a1c183ef89afbb5eb97f42be01cad7bd942958f"
+    },
+    "performance": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/performance/SKILL.md",
+      "computedHash": "25074989a0bbf636fd92e9079270b262a1c63422ed72a854494a8241dea0fcc5"
+    },
+    "sandbox-migrate-to-next": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/sandbox-migrate-to-next/SKILL.md",
+      "computedHash": "a69a7411ea657f036e5144056b9326d7425e854f86bda6c509de454406d58a62"
+    },
+    "sandbox-next": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/sandbox-next/SKILL.md",
+      "computedHash": "7d4796cc0c1b5b5fcb50029e71081234b5a961d863ee42958237a55efafa152d"
+    },
+    "sandbox-stable": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/sandbox-stable/SKILL.md",
+      "computedHash": "df227e92646b68ed526196eff1c6eff4628623de0ce55152cd7958597613eb58"
+    },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo/SKILL.md",
+      "computedHash": "aa081d7ee9f44d1b09ac521051630adac2fca0e595e3d0d0ec881d0b2644676f"
+    },
+    "turnstile-spin": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/turnstile-spin/SKILL.md",
+      "computedHash": "5a0782ee40ef5a4833f7a414ec3e40be60dc70543033256fd1e746ad72368906"
+    },
+    "vercel-cli-with-tokens": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-cli-with-tokens/SKILL.md",
+      "computedHash": "eb16b20dcbe6ce51e0372083d624e0847af1b09487ec99249227d5a8eddebfc0"
+    },
+    "vercel-composition-patterns": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/composition-patterns/SKILL.md",
+      "computedHash": "575757e3e25761c8c562d6e395d29f0b76c98b1273c0bd72d88e6ab1bc9c7d42"
+    },
+    "vercel-optimize": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-optimize/SKILL.md",
+      "computedHash": "ad0ef9c5c980f824e2ec19cba5c45426aba923a17e71fbaf6d1830574b62cc44"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "computedHash": "ca7b0c0c6e5f2750043f7f0cd72d16ac4e2abc48f9b5500d047a4b77a2506212"
+    },
+    "vercel-react-native-skills": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-native-skills/SKILL.md",
+      "computedHash": "41d24eafa7c3d82e270439808f7cfbc4d51aeb2d14f2809a2267c16275784d06"
+    },
+    "vercel-react-view-transitions": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-view-transitions/SKILL.md",
+      "computedHash": "2033ef20681c90d4f93deee719e55e019c254e496d9bf80381c27cc539292001"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+    },
+    "web-perf": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-perf/SKILL.md",
+      "computedHash": "a411d7a1d052e39069ad7c898d6b7e22100945a3f104794e0b76e3af480d3f44"
+    },
+    "web-quality-audit": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-quality-audit/SKILL.md",
+      "computedHash": "10c0b018ce77d2c6dd17aecf1ab58a64abb2beee945354d83c4ba8883527120a"
+    },
+    "workers-best-practices": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/workers-best-practices/SKILL.md",
+      "computedHash": "c919a93c9db826a0ee2818f6f7977c40c1a43bb87abc848b22181fdbabe2ef80"
+    },
+    "wrangler": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/wrangler/SKILL.md",
+      "computedHash": "d2094f7a5a76414fc0cd365fd8ddba3258c2135a1d468b78213c0fa02c309b9b"
+    },
+    "writing-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/writing-guidelines/SKILL.md",
+      "computedHash": "25aa3a33a97bddbcb1847ce4a6169106ec25e5b19b15b99c66e75ab383866ef2"
+    }
+  }
+}
