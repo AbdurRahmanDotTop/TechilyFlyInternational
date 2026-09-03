@@ -1,7 +1,7 @@
 globalThis.process ??= {};
 globalThis.process.env ??= {};
 import { n as __exportAll, r as __toESM } from "./rolldown-runtime_BDykq6kg.mjs";
-import { d as renderTemplate, f as maybeRenderHead, i as renderComponent, m as addAttribute } from "./server_DEJhPYUR.mjs";
+import { C as createAstro, d as renderTemplate, f as maybeRenderHead, i as renderComponent, m as addAttribute } from "./server_DEJhPYUR.mjs";
 import { t as require_react } from "./react_DrT0j-Yv.mjs";
 import { t as createComponent } from "./compiler_ppDonbjW.mjs";
 import { r as jobs } from "./schema_BqQlk95h.mjs";
@@ -10,7 +10,6 @@ import { t as $$AdminLayout } from "./AdminLayout_cKmvRKHp.mjs";
 import { t as createLucideIcon } from "./createLucideIcon_ChIzLsjp.mjs";
 import { t as Trash2 } from "./trash-2_CLqIj8by.mjs";
 import { t as require_jsx_runtime } from "./jsx-runtime_kxRjB8xb.mjs";
-import { env } from "cloudflare:workers";
 /**
 * @license lucide-react v1.39.0 - ISC
 *
@@ -263,7 +262,11 @@ var jobs_exports = /* @__PURE__ */ __exportAll({
 	file: () => $$file,
 	url: () => $$url
 });
+createAstro("https://astro.build");
 var $$Jobs = createComponent(async ($$result, $$props, $$slots) => {
+	const Astro = $$result.createAstro($$props, $$slots);
+	Astro.self = $$Jobs;
+	const env = Astro.locals.runtime.env;
 	const allJobs = await getDb(env).select().from(jobs).all();
 	return renderTemplate`${renderComponent($$result, "AdminLayout", $$AdminLayout, {}, { "default": ($$result) => renderTemplate`${maybeRenderHead($$result)}<div><div class="mb-6"><h1 class="text-3xl font-bold text-foreground">Jobs Management</h1><p class="text-muted-foreground">Review, approve, or reject job postings.</p></div><div class="bg-card rounded-lg border border-border overflow-hidden shadow-sm">${allJobs.length === 0 ? renderTemplate`<div class="p-8 text-center"><h3 class="text-lg font-medium text-foreground">No jobs in queue</h3><p class="text-muted-foreground mt-2">All jobs have been reviewed.</p></div>` : renderTemplate`<div class="overflow-x-auto"><table class="w-full text-left text-sm"><thead class="bg-muted/50 border-b border-border"><tr><th class="px-6 py-4 font-medium text-muted-foreground">Job ID</th><th class="px-6 py-4 font-medium text-muted-foreground">Title</th><th class="px-6 py-4 font-medium text-muted-foreground">Location</th><th class="px-6 py-4 font-medium text-muted-foreground">Status</th><th class="px-6 py-4 font-medium text-muted-foreground">Action</th></tr></thead><tbody class="divide-y divide-border">${allJobs.map((job) => renderTemplate`<tr class="hover:bg-muted/20 transition-colors"><td class="px-6 py-4 font-mono text-xs text-muted-foreground">${job.id.substring(0, 8)}...</td><td class="px-6 py-4 text-foreground font-medium">${job.title}</td><td class="px-6 py-4 text-muted-foreground">${job.city}${job.city && job.country ? ", " : ""}${job.country || "Remote"}</td><td class="px-6 py-4"><span${addAttribute(`inline-block px-2.5 py-1 text-xs font-semibold rounded-full ${job.status === "PUBLISHED" ? "bg-primary/10 text-primary" : job.status === "DRAFT" ? "bg-muted text-muted-foreground" : "bg-destructive/10 text-destructive"}`, "class")}>${job.status}</span></td><td class="px-6 py-4"><div class="flex items-center gap-3"><a${addAttribute(`/jobs/${job.slug}`, "href")} target="_blank" class="text-primary hover:underline text-sm font-medium mr-2">View</a>${renderComponent($$result, "AdminJobActions", AdminJobActions, {
 		"client:load": true,

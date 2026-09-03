@@ -1,8 +1,9 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import { getDb } from '../lib/db';
 import { users } from '../lib/db/schema';
-import { env } from 'cloudflare:workers';
 
+const env = Astro.locals.runtime.env;
 const db = getDb(env);
 const allUsers = await db.select().from(users).all();
 ---

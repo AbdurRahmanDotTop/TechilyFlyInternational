@@ -9,7 +9,6 @@ import { t as getDb } from "./db_1u8eNC5E.mjs";
 import { t as $$PublicLayout } from "./PublicLayout_CbosPeq-.mjs";
 import { t as createLucideIcon } from "./createLucideIcon_ChIzLsjp.mjs";
 import { n as MapPin, r as Briefcase, t as Search } from "./search_CgMV_wv2.mjs";
-import { env } from "cloudflare:workers";
 /**
 * @license lucide-react v1.39.0 - ISC
 *
@@ -49,6 +48,7 @@ createAstro("https://astro.build");
 var $$Index = createComponent(async ($$result, $$props, $$slots) => {
 	const Astro = $$result.createAstro($$props, $$slots);
 	Astro.self = $$Index;
+	const env = Astro.locals.runtime.env;
 	const searchParams = Astro.url.searchParams;
 	const q = searchParams.get("q") || "";
 	const location = searchParams.get("location") || "";

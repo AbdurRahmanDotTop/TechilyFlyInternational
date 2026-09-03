@@ -2,9 +2,9 @@
 import AdminLayout from '../../layouts/AdminLayout.astro';
 import { getDb } from '../../lib/db';
 import { jobs } from '../../lib/db/schema';
-import { env } from 'cloudflare:workers';
 import { AdminJobActions } from '../../components/admin/AdminJobActions';
 
+const env = Astro.locals.runtime.env;
 const db = getDb(env);
 const allJobs = await db.select().from(jobs).all();
 ---

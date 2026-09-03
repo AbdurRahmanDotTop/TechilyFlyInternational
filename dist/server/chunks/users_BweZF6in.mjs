@@ -1,7 +1,7 @@
 globalThis.process ??= {};
 globalThis.process.env ??= {};
 import { n as __exportAll, r as __toESM } from "./rolldown-runtime_BDykq6kg.mjs";
-import { d as renderTemplate, f as maybeRenderHead, i as renderComponent, m as addAttribute } from "./server_DEJhPYUR.mjs";
+import { C as createAstro, d as renderTemplate, f as maybeRenderHead, i as renderComponent, m as addAttribute } from "./server_DEJhPYUR.mjs";
 import { t as require_react } from "./react_DrT0j-Yv.mjs";
 import { t as createComponent } from "./compiler_ppDonbjW.mjs";
 import { o as users } from "./schema_BqQlk95h.mjs";
@@ -10,7 +10,6 @@ import { t as $$AdminLayout } from "./AdminLayout_cKmvRKHp.mjs";
 import { t as createLucideIcon } from "./createLucideIcon_ChIzLsjp.mjs";
 import { t as Trash2 } from "./trash-2_CLqIj8by.mjs";
 import { t as require_jsx_runtime } from "./jsx-runtime_kxRjB8xb.mjs";
-import { env } from "cloudflare:workers";
 /**
 * @license lucide-react v1.39.0 - ISC
 *
@@ -146,7 +145,11 @@ var users_exports = /* @__PURE__ */ __exportAll({
 	file: () => $$file,
 	url: () => $$url
 });
+createAstro("https://astro.build");
 var $$Users = createComponent(async ($$result, $$props, $$slots) => {
+	const Astro = $$result.createAstro($$props, $$slots);
+	Astro.self = $$Users;
+	const env = Astro.locals.runtime.env;
 	const allUsers = await getDb(env).select().from(users).all();
 	return renderTemplate`${renderComponent($$result, "AdminLayout", $$AdminLayout, {}, { "default": ($$result) => renderTemplate`${maybeRenderHead($$result)}<div><div class="mb-6"><h1 class="text-3xl font-bold text-foreground">Users Management</h1><p class="text-muted-foreground">Manage platform users, employers, and candidates.</p></div><div class="bg-card rounded-lg border border-border overflow-hidden shadow-sm">${allUsers.length === 0 ? renderTemplate`<div class="p-8 text-center"><h3 class="text-lg font-medium text-foreground">No users found</h3><p class="text-muted-foreground mt-2">User list will appear here.</p></div>` : renderTemplate`<div class="overflow-x-auto"><table class="w-full text-left text-sm"><thead class="bg-muted/50 border-b border-border"><tr><th class="px-6 py-4 font-medium text-muted-foreground">User ID</th><th class="px-6 py-4 font-medium text-muted-foreground">Email</th><th class="px-6 py-4 font-medium text-muted-foreground">Role</th><th class="px-6 py-4 font-medium text-muted-foreground">Joined At</th><th class="px-6 py-4 font-medium text-muted-foreground">Action</th></tr></thead><tbody class="divide-y divide-border">${allUsers.map((user) => renderTemplate`<tr class="hover:bg-muted/20 transition-colors"><td class="px-6 py-4 font-mono text-xs text-muted-foreground">${user.id.substring(0, 8)}...</td><td class="px-6 py-4 text-foreground font-medium">${user.email}</td><td class="px-6 py-4"><span${addAttribute(`inline-block px-2.5 py-1 text-xs font-semibold rounded-full ${user.role === "ADMIN" ? "bg-destructive/10 text-destructive" : user.role === "EMPLOYER" ? "bg-primary/10 text-primary" : "bg-secondary text-secondary-foreground"}`, "class")}>${user.role}</span></td><td class="px-6 py-4 text-muted-foreground">${new Date(user.createdAt).toLocaleDateString()}</td><td class="px-6 py-4">${renderComponent($$result, "AdminUserActions", AdminUserActions, {
 		"client:load": true,

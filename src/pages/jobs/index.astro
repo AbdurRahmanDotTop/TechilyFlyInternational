@@ -2,10 +2,10 @@
 import PublicLayout from '../../layouts/PublicLayout.astro';
 import { getDb } from '../../lib/db';
 import { jobs } from '../../lib/db/schema';
-import { env } from 'cloudflare:workers';
 import { like, or, and } from 'drizzle-orm';
 import { Search, MapPin, Briefcase, Calendar } from 'lucide-react';
 
+const env = Astro.locals.runtime.env;
 const searchParams = Astro.url.searchParams;
 const q = searchParams.get('q') || '';
 const location = searchParams.get('location') || '';
