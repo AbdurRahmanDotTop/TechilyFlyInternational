@@ -1,9 +1,9 @@
-name = "web"
+name = "techilyflyinternational"
 compatibility_date = "2024-03-20"
+compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "techily_fly_intl_db"
 database_id = "cfc0779f-983a-4507-827a-cfb6236fbe85"
-
