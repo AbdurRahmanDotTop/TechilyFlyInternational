@@ -3,12 +3,15 @@ import Layout from './Layout.astro';
 ---
 <Layout>
     <div class="flex flex-col min-h-screen">
-      <header class="border-b bg-white p-4 flex justify-between items-center">
+      <header class="border-b bg-white p-4 flex justify-between items-center sticky top-0 z-40">
         <h2 class="text-xl font-bold text-primary">Candidate Portal</h2>
-        <nav class="space-x-4">
-          <a href="/candidate" class="text-sm font-medium">Dashboard</a>
-          <a href="/candidate/profile" class="text-sm font-medium">Profile</a>
-          <a href="/candidate/applications" class="text-sm font-medium">My Applications</a>
+        <nav class="space-x-6 flex items-center">
+          <a href="/candidate" class="text-sm font-medium hover:text-primary transition-colors">Dashboard</a>
+          <a href="/candidate/profile" class="text-sm font-medium hover:text-primary transition-colors">Profile</a>
+          <a href="/candidate/applications" class="text-sm font-medium hover:text-primary transition-colors">My Applications</a>
+          <form action="/api/auth/logout" method="POST" class="inline">
+            <button type="submit" class="text-sm font-medium text-destructive hover:text-destructive/80 transition-colors">Logout</button>
+          </form>
         </nav>
       </header>
       <main class="flex-1 p-8 bg-background">

@@ -14,9 +14,14 @@ import Layout from './Layout.astro';
         </div>
         <div class="mt-8 pt-6 border-t border-muted-foreground/20">
           <p class="text-xs text-muted-foreground mb-2">Support Contact</p>
-          <a href="mailto:admin@international.techilyfly.com" class="text-sm hover:text-primary transition-colors break-all">
+          <a href="mailto:admin@international.techilyfly.com" class="text-sm hover:text-primary transition-colors break-all block mb-6">
             admin@international.techilyfly.com
           </a>
+          <form action="/api/auth/logout" method="POST">
+            <button type="submit" class="w-full text-left px-4 py-2 rounded bg-destructive text-white hover:bg-destructive/80 transition-colors">
+              Logout
+            </button>
+          </form>
         </div>
       </aside>
       <main class="flex-1 p-8 bg-background">

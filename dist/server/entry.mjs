@@ -1,7 +1,7 @@
 globalThis.process ??= {};
 globalThis.process.env ??= {};
-import { a as DefaultFetchHandler, i as App, o as manifest } from "./chunks/entrypoints_KPkkf4RW.mjs";
-import "./chunks/image-binding-transform_Bg9VG6Kw.mjs";
+import { a as DefaultFetchHandler, i as App, o as manifest } from "./chunks/entrypoints_Dg1icUbK.mjs";
+import "./chunks/image-binding-transform_Ul6HmeSl.mjs";
 import { EventEmitter } from "node:events";
 import { Writable } from "node:stream";
 import "cloudflare:workers";
