@@ -1,4 +1,4 @@
-name = "techilyfly-intl-worker"
+name = "web"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
