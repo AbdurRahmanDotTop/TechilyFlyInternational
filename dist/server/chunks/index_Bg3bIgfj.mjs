@@ -4,7 +4,7 @@ import { n as __exportAll, r as __toESM } from "./rolldown-runtime_BDykq6kg.mjs"
 import { O as renderTemplate, S as renderComponent } from "./sequence_Cy34-R2h.mjs";
 import { t as require_react } from "./react_DrT0j-Yv.mjs";
 import { t as createComponent } from "./compiler_QGfFmrLY.mjs";
-import { t as $$PublicLayout } from "./PublicLayout_BsgLhiJR.mjs";
+import { t as $$PublicLayout } from "./PublicLayout_DgJZzNdn.mjs";
 import { a as useRenderElement, c as formatErrorMessage, d as useRefWithInit, f as SafeReact, i as cn, l as useIsoLayoutEffect, n as createLucideIcon, o as EMPTY_OBJECT, p as isElement, r as Button, s as NOOP, t as CircleCheck, u as useStableCallback } from "./circle-check_CrCMRUfo.mjs";
 import { t as require_jsx_runtime } from "./jsx-runtime_kxRjB8xb.mjs";
 //#region node_modules/@base-ui/utils/owner.mjs
@@ -552,12 +552,15 @@ function Home() {
 							className: "text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto font-medium leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200",
 							children: "Connect with top verified employers across the UAE, Saudi Arabia, Qatar, and beyond."
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
+							action: "/jobs",
+							method: "GET",
 							className: "bg-white/70 backdrop-blur-md p-3 md:p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white/50 flex flex-col md:flex-row gap-3 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "relative flex-1 group",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										name: "q",
 										placeholder: "Job title, keyword, or company",
 										className: "pl-12 h-14 text-lg border-0 bg-transparent focus-visible:ring-0 shadow-none font-medium placeholder:font-normal text-foreground"
 									})]
@@ -566,11 +569,13 @@ function Home() {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "relative flex-1 group",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, { className: "absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+										name: "location",
 										placeholder: "City or Country",
 										className: "pl-12 h-14 text-lg border-0 bg-transparent focus-visible:ring-0 shadow-none font-medium placeholder:font-normal text-foreground"
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "submit",
 									size: "lg",
 									className: "h-14 px-10 bg-primary hover:bg-primary/90 text-lg font-bold shadow-lg shadow-primary/25 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]",
 									children: "Search Jobs"

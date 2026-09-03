@@ -75,10 +75,11 @@ export default function Home() {
           </p>
           
           {/* Glassmorphism Search Bar */}
-          <div className="bg-white/70 backdrop-blur-md p-3 md:p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white/50 flex flex-col md:flex-row gap-3 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+          <form action="/jobs" method="GET" className="bg-white/70 backdrop-blur-md p-3 md:p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white/50 flex flex-col md:flex-row gap-3 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
             <div className="relative flex-1 group">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
               <Input 
+                name="q"
                 placeholder="Job title, keyword, or company" 
                 className="pl-12 h-14 text-lg border-0 bg-transparent focus-visible:ring-0 shadow-none font-medium placeholder:font-normal text-foreground"
               />
@@ -87,14 +88,15 @@ export default function Home() {
             <div className="relative flex-1 group">
               <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
               <Input 
+                name="location"
                 placeholder="City or Country" 
                 className="pl-12 h-14 text-lg border-0 bg-transparent focus-visible:ring-0 shadow-none font-medium placeholder:font-normal text-foreground"
               />
             </div>
-            <Button size="lg" className="h-14 px-10 bg-primary hover:bg-primary/90 text-lg font-bold shadow-lg shadow-primary/25 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]">
+            <Button type="submit" size="lg" className="h-14 px-10 bg-primary hover:bg-primary/90 text-lg font-bold shadow-lg shadow-primary/25 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]">
               Search Jobs
             </Button>
-          </div>
+          </form>
         </div>
       </section>
 

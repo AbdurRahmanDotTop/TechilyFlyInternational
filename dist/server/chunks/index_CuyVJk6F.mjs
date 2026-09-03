@@ -3,7 +3,7 @@ globalThis.process.env ??= {};
 import { n as __exportAll } from "./rolldown-runtime_BDykq6kg.mjs";
 import { O as renderTemplate, S as renderComponent, k as maybeRenderHead } from "./sequence_Cy34-R2h.mjs";
 import { t as createComponent } from "./compiler_QGfFmrLY.mjs";
-import { t as $$AdminLayout } from "./AdminLayout_ChyVRl7Q.mjs";
+import { t as $$AdminLayout } from "./AdminLayout_DXEjDCNx.mjs";
 //#region src/pages/admin/index.astro
 var admin_exports = /* @__PURE__ */ __exportAll({
 	default: () => $$Index,
