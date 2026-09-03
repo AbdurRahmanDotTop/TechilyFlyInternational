@@ -1,18 +1,59 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getDb } from '../../lib/db';
+import { users } from '../../lib/db/schema';
+import { env } from 'cloudflare:workers';
+
+const db = getDb(env);
+const allUsers = await db.select().from(users).all();
 ---
 <AdminLayout>
   <div>
     <div class="mb-6">
-      <h1 class="text-3xl font-bold">Users Management</h1>
+      <h1 class="text-3xl font-bold text-foreground">Users Management</h1>
       <p class="text-muted-foreground">Manage platform users, employers, and candidates.</p>
     </div>
     
-    <div class="bg-card rounded-lg border border-border overflow-hidden">
-      <div class="p-8 text-center">
-        <h3 class="text-lg font-medium">No users found</h3>
-        <p class="text-muted-foreground mt-2">User list will appear here.</p>
-      </div>
+    <div class="bg-card rounded-lg border border-border overflow-hidden shadow-sm">
+      {allUsers.length === 0 ? (
+        <div class="p-8 text-center">
+          <h3 class="text-lg font-medium text-foreground">No users found</h3>
+          <p class="text-muted-foreground mt-2">User list will appear here.</p>
+        </div>
+      ) : (
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-muted/50 border-b border-border">
+              <tr>
+                <th class="px-6 py-4 font-medium text-muted-foreground">User ID</th>
+                <th class="px-6 py-4 font-medium text-muted-foreground">Email</th>
+                <th class="px-6 py-4 font-medium text-muted-foreground">Role</th>
+                <th class="px-6 py-4 font-medium text-muted-foreground">Joined At</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {allUsers.map((user) => (
+                <tr class="hover:bg-muted/20 transition-colors">
+                  <td class="px-6 py-4 font-mono text-xs text-muted-foreground">{user.id.substring(0, 8)}...</td>
+                  <td class="px-6 py-4 text-foreground font-medium">{user.email}</td>
+                  <td class="px-6 py-4">
+                    <span class={`inline-block px-2.5 py-1 text-xs font-semibold rounded-full ${
+                      user.role === 'ADMIN' ? 'bg-destructive/10 text-destructive' :
+                      user.role === 'EMPLOYER' ? 'bg-primary/10 text-primary' :
+                      'bg-secondary text-secondary-foreground'
+                    }`}>
+                      {user.role}
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-muted-foreground">
+                    {new Date(user.createdAt).toLocaleDateString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   </div>
 </AdminLayout>

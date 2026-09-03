@@ -3,7 +3,7 @@ globalThis.process.env ??= {};
 import { n as __exportAll } from "./rolldown-runtime_BDykq6kg.mjs";
 import { O as renderTemplate, S as renderComponent, k as maybeRenderHead } from "./sequence_Cy34-R2h.mjs";
 import { t as createComponent } from "./compiler_QGfFmrLY.mjs";
-import { t as $$CandidateLayout } from "./CandidateLayout_CfAcwQ2C.mjs";
+import { t as $$CandidateLayout } from "./CandidateLayout_DjQuRtp5.mjs";
 //#region src/pages/candidate/profile.astro
 var profile_exports = /* @__PURE__ */ __exportAll({
 	default: () => $$Profile,

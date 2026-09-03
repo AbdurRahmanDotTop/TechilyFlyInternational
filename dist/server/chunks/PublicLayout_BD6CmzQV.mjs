@@ -2,7 +2,7 @@ globalThis.process ??= {};
 globalThis.process.env ??= {};
 import { B as createAstro, C as Fragment, O as renderTemplate, S as renderComponent, T as renderSlot, j as addAttribute, k as maybeRenderHead } from "./sequence_Cy34-R2h.mjs";
 import { t as createComponent } from "./compiler_QGfFmrLY.mjs";
-import { t as $$Layout } from "./Layout_GDqIhaKC.mjs";
+import { t as $$Layout } from "./Layout_rJI9s5in.mjs";
 //#region src/layouts/PublicLayout.astro
 createAstro("https://astro.build");
 var $$PublicLayout = createComponent(($$result, $$props, $$slots) => {

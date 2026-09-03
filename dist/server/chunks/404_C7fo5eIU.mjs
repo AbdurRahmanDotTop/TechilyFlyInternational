@@ -3,7 +3,7 @@ globalThis.process.env ??= {};
 import { n as __exportAll } from "./rolldown-runtime_BDykq6kg.mjs";
 import { O as renderTemplate, S as renderComponent, k as maybeRenderHead } from "./sequence_Cy34-R2h.mjs";
 import { t as createComponent } from "./compiler_QGfFmrLY.mjs";
-import { t as $$PublicLayout } from "./PublicLayout_DgJZzNdn.mjs";
+import { t as $$PublicLayout } from "./PublicLayout_BD6CmzQV.mjs";
 //#region src/pages/404.astro
 var _404_exports = /* @__PURE__ */ __exportAll({
 	default: () => $$404,

@@ -1,7 +1,7 @@
 globalThis.process ??= {};
 globalThis.process.env ??= {};
 import { lt as defineMiddleware, t as sequence } from "./chunks/sequence_Cy34-R2h.mjs";
-import { t as getAuth } from "./chunks/auth_CFwL91Oh.mjs";
+import { t as getAuth } from "./chunks/auth_0euegTNK.mjs";
 import { env } from "cloudflare:workers";
 //#region src/middleware.ts
 var onRequest$1 = defineMiddleware(async (context, next) => {
