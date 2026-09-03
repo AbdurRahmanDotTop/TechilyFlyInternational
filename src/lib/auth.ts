@@ -3,8 +3,8 @@ import { DrizzleSQLiteAdapter } from '@lucia-auth/adapter-drizzle';
 import { getDb } from './db';
 import { users, sessions } from './db/schema';
 
-export function getAuth() {
-  const db = getDb();
+export function getAuth(env: any) {
+  const db = getDb(env);
   const adapter = new DrizzleSQLiteAdapter(db, sessions, users);
   
   return new Lucia(adapter, {
