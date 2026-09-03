@@ -1,5 +1,5 @@
 ---
-import '../old-nextjs-src/globals.css';
+import '../styles/globals.css';
 const { title = "Techily Fly", description = "Find Your Next Career in the Gulf" } = Astro.props;
 ---
 
@@ -7,6 +7,9 @@ const { title = "Techily Fly", description = "Find Your Next Career in the Gulf"
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <title>{title}</title>
     <meta name="description" content={description} />
   </head>

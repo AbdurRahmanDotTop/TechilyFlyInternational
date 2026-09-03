@@ -4,14 +4,14 @@ import Layout from './Layout.astro';
 <Layout>
     <div class="flex flex-col min-h-screen">
       <header class="border-b bg-white p-4 flex justify-between items-center">
-        <h2 class="text-xl font-bold text-teal-600">Candidate Portal</h2>
+        <h2 class="text-xl font-bold text-primary">Candidate Portal</h2>
         <nav class="space-x-4">
           <a href="/candidate" class="text-sm font-medium">Dashboard</a>
           <a href="/candidate/profile" class="text-sm font-medium">Profile</a>
           <a href="/candidate/applications" class="text-sm font-medium">My Applications</a>
         </nav>
       </header>
-      <main class="flex-1 p-8 bg-slate-50">
+      <main class="flex-1 p-8 bg-background">
         <slot />
       </main>
     </div>
