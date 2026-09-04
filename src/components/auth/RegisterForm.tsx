@@ -20,7 +20,7 @@ export default function RegisterForm() {
         body: JSON.stringify({ fullName, email, password, role }),
       });
 
-      const data = await res.json();
+      const data = await res.json() as any;
       if (!res.ok) {
         throw new Error(data.error || 'Failed to register');
       }
